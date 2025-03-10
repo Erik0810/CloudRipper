@@ -1,10 +1,8 @@
 Flask==2.3.3
-celery==5.3.4
-redis==5.0.1
+gunicorn==21.2.0
 yt-dlp==2023.7.6
 requests==2.31.0
 python-dotenv==1.0.0
 Werkzeug==2.3.7
 Flask-SQLAlchemy==3.1.1
 SQLAlchemy==2.0.20
-pydub==0.25.1
