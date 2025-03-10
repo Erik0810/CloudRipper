@@ -1,7 +1,7 @@
 # CloudRipper
 When trying to learn how to dj i encountered a limiting workflow when trying to download tracks locally. Other websites that promoted this functionality were either not working or riddled with ads. This is a hobby project that allows you to download your SoundCloud playlists with ease. 
 
-The app is hosted online for personal use at: URL 
+The app is hosted online for personal use at: https://cloudripper.onrender.com (running on renders free tier so allow 1-2 mins of loading time as it spins down on inactivity)
 
 ## ⚠️ Important Notice
 
