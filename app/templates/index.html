@@ -5,40 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CloudRipper - Download SoundCloud Playlists</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="glitch-container">
-        <div class="glitch-effect"></div>
-    </div>
-    
     <div class="container">
         <header>
-            <h1 class="glitch-text" data-text="CloudRipper">CloudRipper</h1>
+            <h1>CloudRipper</h1>
             <p class="subtitle">SoundCloud Playlist Downloader</p>
         </header>
         
         <main>
             <div class="terminal">
                 <div class="terminal-header">
-                    <div class="terminal-buttons">
-                        <span class="terminal-button"></span>
-                        <span class="terminal-button"></span>
-                        <span class="terminal-button"></span>
-                    </div>
                     <div class="terminal-title">terminal@cloudripper:~</div>
                 </div>
                 <div class="terminal-content">
                     <div class="terminal-line">
-                        <span class="prompt">$</span> <span class="command">echo "Welcome to CloudRipper"</span>
+                        <span class="prompt">></span> <span class="command">echo "Welcome to CloudRipper"</span>
                     </div>
                     <div class="terminal-line output">
                         Welcome to CloudRipper - Download your SoundCloud playlists with ease
                     </div>
                     <div class="terminal-line">
-                        <span class="prompt">$</span> <span class="command">cat instructions.txt</span>
+                        <span class="prompt">></span> <span class="command">cat instructions.txt</span>
                     </div>
                     <div class="terminal-line output">
                         1. Paste your SoundCloud playlist URL below<br>
@@ -49,22 +41,18 @@
                     
                     <div class="input-container">
                         <div class="terminal-line">
-                            <span class="prompt">$</span> <span class="command">cloudripper --url</span>
+                            <span class="prompt">></span> <span class="command">cloudripper --url</span>
                             <input type="text" id="playlist-url" placeholder="https://soundcloud.com/user/sets/playlist-name" class="terminal-input">
                         </div>
                     </div>
                     
                     <div class="button-container">
-                        <button id="rip-button" class="cybr-btn">
-                            RIP<span aria-hidden>_</span>
-                            <span aria-hidden class="cybr-btn__glitch">RIP_</span>
-                            <span aria-hidden class="cybr-btn__tag">R25</span>
-                        </button>
+                        <button id="rip-button" class="cybr-btn">RIP</button>
                     </div>
                     
                     <div id="status-container" class="hidden">
                         <div class="terminal-line">
-                            <span class="prompt">$</span> <span class="command">cloudripper --status</span>
+                            <span class="prompt">></span> <span class="command">cloudripper --status</span>
                         </div>
                         <div class="terminal-line output" id="status-output">
                             Initializing download process...
@@ -79,23 +67,19 @@
                     
                     <div id="download-container" class="hidden">
                         <div class="terminal-line">
-                            <span class="prompt">$</span> <span class="command">cloudripper --download</span>
+                            <span class="prompt">></span> <span class="command">cloudripper --download</span>
                         </div>
                         <div class="terminal-line output">
                             Download ready! Click the button below to download your ZIP file.
                         </div>
                         <div class="button-container">
-                            <button id="download-button" class="cybr-btn cybr-btn--secondary">
-                                DOWNLOAD<span aria-hidden>_</span>
-                                <span aria-hidden class="cybr-btn__glitch">DOWNLOAD_</span>
-                                <span aria-hidden class="cybr-btn__tag">R25</span>
-                            </button>
+                            <button id="download-button" class="cybr-btn">DOWNLOAD</button>
                         </div>
                     </div>
                     
                     <div id="error-container" class="hidden">
                         <div class="terminal-line">
-                            <span class="prompt">$</span> <span class="command">cloudripper --error</span>
+                            <span class="prompt">></span> <span class="command">cloudripper --error</span>
                         </div>
                         <div class="terminal-line output error" id="error-output">
                             An error occurred during the download process.
@@ -106,7 +90,7 @@
         </main>
         
         <footer>
-            <p>CloudRipper &copy; 2025 | <span class="blink">Present day, present time... hahahaha!</span></p>
+            <p>Erik Øverby &copy; Present day, present time<span class="blink">_</span></p>
         </footer>
     </div>
     
