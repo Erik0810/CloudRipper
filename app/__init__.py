@@ -16,7 +16,18 @@ def create_app():
     
     # Configure the app
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-key-for-cloudripper')
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///cloudripper.db')
+    
+    # Database configuration
+    if os.environ.get('DATABASE_URL'):
+        # Handle Render's PostgreSQL URL format
+        database_url = os.environ.get('DATABASE_URL')
+        if database_url.startswith("postgres://"):
+            database_url = database_url.replace("postgres://", "postgresql://", 1)
+        app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+    else:
+        # Local SQLite database
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cloudripper.db'
+    
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['UPLOAD_FOLDER'] = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'downloads')
     

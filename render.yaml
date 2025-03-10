@@ -2,14 +2,18 @@ services:
   - type: web
     name: cloudripper
     env: python
+    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn "app:create_app()" --config gunicorn.conf.py
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
       - key: SOUNDCLOUD_CLIENT_ID
-        sync: false # This will be set manually in Render's dashboard
+        sync: false # Set this manually in Render dashboard
       - key: SECRET_KEY
-        generateValue: true # This will auto-generate a secure key
-      - key: DATABASE_URL
-        sync: false # This will be set manually in Render's dashboard
+        generateValue: true
+    autoDeploy: false # For better control over deployments
+    disk:
+      name: downloads
+      mountPath: /opt/render/project/src/app/downloads
+      sizeGB: 1
