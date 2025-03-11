@@ -26,12 +26,8 @@ def get_database_url():
     # Parse the URL
     parsed = urlparse(database_url)
 
-    # Define SSL parameters
-    ssl_params = [
-        "sslmode=require",
-        "ssl=true",
-        "connect_timeout=30"
-    ]
+    # Only use sslmode parameter
+    ssl_params = ["sslmode=require"]
 
     # Combine existing query parameters with SSL parameters
     existing_params = parsed.query.split('&') if parsed.query else []
@@ -60,8 +56,8 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = get_database_url()
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
-        "pool_pre_ping": True,  # Enable connection testing
-        "pool_recycle": 300,    # Recycle connections every 5 minutes
+        "pool_pre_ping": True,
+        "pool_recycle": 300,
         "connect_args": {
             "sslmode": "require",
             "connect_timeout": 30
@@ -73,38 +69,9 @@ def create_app():
     # Ensure download directory exists
     os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-    # Set up logging
-    if not app.debug:
-        # Create logs directory if it doesn't exist
-        logs_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'logs')
-        os.makedirs(logs_dir, exist_ok=True)
+    # Rest of your logging setup...
 
-        # Set up file handler
-        file_handler = RotatingFileHandler(
-            os.path.join(logs_dir, 'cloudripper.log'),
-            maxBytes=10240,
-            backupCount=10
-        )
-        file_handler.setFormatter(logging.Formatter(
-            '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
-        ))
-        file_handler.setLevel(logging.INFO)
-
-        # Set up console handler
-        console_handler = logging.StreamHandler()
-        console_handler.setLevel(logging.INFO)
-        console_handler.setFormatter(logging.Formatter(
-            '%(asctime)s %(levelname)s: %(message)s'
-        ))
-
-        # Add handlers to app logger
-        app.logger.addHandler(file_handler)
-        app.logger.addHandler(console_handler)
-        app.logger.setLevel(logging.INFO)
-
-        app.logger.info('CloudRipper startup')
-
-    # Initialize extensions with custom engine options
+    # Initialize extensions
     db.init_app(app)
 
     # Register blueprints
