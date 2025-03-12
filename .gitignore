@@ -44,3 +44,7 @@ app/downloads/
 # Database
 *.db
 *.sqlite3
+
+#docs
+UPDATEUI.md
+CURRENT_STATE.md
