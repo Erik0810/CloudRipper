@@ -46,5 +46,4 @@ app/downloads/
 *.sqlite3
 
 #docs
-UPDATEUI.md
-CURRENT_STATE.md
+/docs
