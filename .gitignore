@@ -46,4 +46,4 @@ app/downloads/
 *.sqlite3
 
 #docs
-/docs
+docs/
